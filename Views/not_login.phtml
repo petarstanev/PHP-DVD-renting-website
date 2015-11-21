@@ -1,0 +1,22 @@
+<?php require( 'template/header.phtml' );
+
+
+?>
+<h3><b>Login</b></h3>
+<p>If you have already Registered, <u><a href="registration.php">Register here</a></u></p>
+
+<form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
+	<p><b>Login</b> using your <b>email address</b> and password:<br>
+		Email: <input type="email" name="email" value="<?php if(!empty($_POST['email']) && !isset( $_POST["reset"] ))echo $_POST['email']; ?>"><br>
+		Password: <input type="password" name="password" value="<?php if(!empty($_POST['password']) && !isset( $_POST["reset"] ))echo $_POST['password']; ?>">
+	</p>
+	<p>
+		<input type="submit" name="login" value="Login">
+		<input type="submit" name="reset" value="Reset">
+	</p>
+
+</form>
+
+
+
+<?php require( 'template/footer.phtml' ) ?>

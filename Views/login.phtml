@@ -1,0 +1,7 @@
+<?php require( 'template/header.phtml' ) ?>
+
+<?php echo $_SESSION['email']; ?>. You are logged in.
+<form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
+	<input type="submit" name="logout" value="Log out">
+</form>
+<?php require( 'template/footer.phtml' ) ?>

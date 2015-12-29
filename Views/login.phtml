@@ -1,6 +1,6 @@
 <?php require( 'template/header.phtml' ) ?>
 
-<?php echo $_SESSION['email']; ?>. You are logged in.
+<?php echo $_COOKIE['email']; ?>. You are logged in.
 <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
 	<input type="submit" name="logout" value="Log out">
 </form>

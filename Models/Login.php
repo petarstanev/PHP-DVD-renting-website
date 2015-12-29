@@ -6,12 +6,10 @@ class Login {
 	var $messages = array();
 
 	public function __construct() {
-		session_start();
-
 		if ( isset( $_POST["logout"] ) ) {
 			$this->logout();
 		} // login via post data (if user just submitted a login form)
-		elseif ( isset( $_POST["login"] ) ) {
+		if ( isset( $_POST["login"] ) ) {
 			$this->login();
 		}
 	}
@@ -42,9 +40,11 @@ class Login {
 					$result_row = $result->fetch( PDO::FETCH_ASSOC );
 
 					if ( strcmp( md5($this->password), $result_row['password'] ) == 0 ) {
-						$_SESSION['email'] = $result_row['email'];//remove
-						$_SESSION['login'] = 1;
-						$_SESSION['id'] = $result_row['id'];
+						setcookie("email", $result_row['email'], time() + (86400 * 30), "/");
+						//cookie set for 1 day.
+
+						header('Location: '.$_SERVER['REQUEST_URI']);
+
 						$this->messages[] = "Login successfully";
 					} else {
 						$this->messages[] = "Wrong password. Try again.";
@@ -59,9 +59,8 @@ class Login {
 	}
 
 	public function logout() {
-		$_SESSION = array();
-		session_destroy();
-
+		setcookie("email", "", time() - 3600);// set the expiration date to 1 hour ago
+		header('Location: '.$_SERVER['REQUEST_URI']);
 		$this->messages[] = "You have been logged out.";
 	}
 
@@ -71,7 +70,7 @@ class Login {
 	 * @return boolean user's login status
 	 */
 	public function isLoggedIn() {
-		if ( isset( $_SESSION['login'] )) {
+		if(isset($_COOKIE["email"])) {
 			return true;
 		}
 

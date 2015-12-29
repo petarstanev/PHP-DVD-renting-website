@@ -52,7 +52,7 @@ class Registration
 					$user_insert = $db->query($sql);
 					// if user has been added successfully
 					if ($user_insert) {
-						$this->messages[] = "Your account is created. You can now log in.";
+						$this->messages[] = "Your account is created. You can now <a href='login.php'> Login.</a>";
 					} else {
 						$this->messages[] = "There was a problem with your registration.";
 					}

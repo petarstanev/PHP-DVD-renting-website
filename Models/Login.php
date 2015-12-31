@@ -6,6 +6,9 @@ class Login {
 	var $messages = array();
 
 	public function __construct() {
+		if (session_status() == PHP_SESSION_NONE) {
+			session_start();
+		}
 		if ( isset( $_POST["logout"] ) ) {
 			$this->logout();
 		} // login via post data (if user just submitted a login form)
@@ -40,10 +43,10 @@ class Login {
 					$result_row = $result->fetch( PDO::FETCH_ASSOC );
 
 					if ( strcmp( md5($this->password), $result_row['password'] ) == 0 ) {
-						setcookie("email", $result_row['email'], time() + (86400 * 30), "/");
-						//cookie set for 1 day.
+						$_SESSION['email'] = $email;
+						$_SESSION['selectedMovies'] = array();
 
-						header('Location: '.$_SERVER['REQUEST_URI']);
+
 
 						$this->messages[] = "Login successfully";
 					} else {
@@ -59,7 +62,7 @@ class Login {
 	}
 
 	public function logout() {
-		setcookie("email", "", time() - 3600);// set the expiration date to 1 hour ago
+		session_destroy();
 		header('Location: '.$_SERVER['REQUEST_URI']);
 		$this->messages[] = "You have been logged out.";
 	}
@@ -70,10 +73,11 @@ class Login {
 	 * @return boolean user's login status
 	 */
 	public function isLoggedIn() {
-		if(isset($_COOKIE["email"])) {
+		//var_dump($_SESSION);
+
+		if(isset($_SESSION['email'])) {
 			return true;
 		}
-
 		return false;
 	}
 }

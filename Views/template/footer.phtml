@@ -4,9 +4,11 @@
     <div class-"row">
         <div id="footer" class="col-xs-12">
             <?php
-
-            if(isset($_COOKIE["email"])) {?>
-                <p>Logged in as :  <?php echo $_COOKIE["email"]?></p>
+            if (session_status() == PHP_SESSION_NONE) {
+                session_start();
+            }
+            if(isset($_SESSION['email'])) {?>
+                <p>Logged in as :  <?php echo $_SESSION["email"]?></p>
             <?php }else {
                 echo "Not logged in.";
             }?>

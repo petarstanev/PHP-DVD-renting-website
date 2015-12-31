@@ -2,8 +2,38 @@
 
 <h3><b>Basket</b></h3>
 
-<div class="container">
+<h2><b>Your movies:</b> </h2>
 
+<?php
+
+
+if ( isset( $selectedMovies ) && !empty($selectedMovies)):?>
+<div class="container">
+	<table class="table-bordered">
+		<thead>
+		<tr>
+			<th>DVD details</th>
+			<th>Price</th>
+		</tr>
+		</thead>
+		<tbody>
+
+		<?php foreach ($selectedMovies as $dvd) : ?>
+			<tr>
+				<td>
+					<p><?php echo $dvd->title;?> </p>
+				</td>
+				<td>&pound<?php echo $dvd->price;?>
+				</td>
+			</tr>
+		<?php endforeach; ?>
+		</tbody>
+	</table>
+
+	<p><h3>Total rental cost = &pound<?php echo $totalCost ?></h3></p>
+
+	<u><a href="" >Pay for DVD and Logout</a></u>
 </div>
+<?php endif ?>
 
 <?php require('template/footer.phtml') ?>

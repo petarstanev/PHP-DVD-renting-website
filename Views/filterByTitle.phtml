@@ -9,53 +9,5 @@
 </form>
 </p>
 
-<?php if ( isset( $result )){
-	//var_dump($result);
-	if (!is_string ($result)){
-		;?>
-<div class="container">
-	<table class="table-bordered">
-		<thead>
-		<tr>
-			<th>DVD details</th>
-			<th>Price</th>
-		</tr>
-		</thead>
-		<tbody>
-
-		<?php foreach ($result as $dvd) : ?>
-			<tr>
-				<td>
-					<img src="<?php echo $dvd['image'];?>" alt="Smiley face" height="42" width="42">
-					<p>Title: <?php echo $dvd['title'];?> (<?php echo $dvd['year'];?>)</p>
-					<p>Cast: <?php echo $dvd['director'];?> </p>
-					<p>Cast: <?php echo $dvd['cast'];?> </p>
-					<p>Genre: <?php echo $dvd['genre'];?> </p>
-					<p>Synopsis: <?php echo $dvd['synopsis'];?> </p>
-				</td>
-				<td>&pound<?php switch ($dvd['priceBand']) {
-						case "A":
-							echo "3.50";
-							break;
-						case "B":
-							echo "2.50";
-							break;
-						case "C":
-							echo "1.00";
-							break;
-					}
-					?>
-					<u><a href="rent.php">Rent</a></u>
-				</td>
-			</tr>
-		<?php endforeach; ?>
-		</tbody>
-	</table>
-</div>
-	<?php }else{
-		echo($result);
-	}
-}?>
-
-
+<?php require('printDVDs.phtml') ?>
 <?php require('template/footer.phtml') ?>

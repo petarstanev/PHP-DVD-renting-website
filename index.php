@@ -1,5 +1,5 @@
 <?php
 
 $view = new stdClass();
-$view->pageTitle = 'Petar';
+$view->pageTitle = 'Home';
 require_once('Views/index.phtml');

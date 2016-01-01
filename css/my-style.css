@@ -1,33 +1,35 @@
+#header{
+padding-bottom: 20px;
+}
+
 #title {
     margin-top: 12px;
-    background-color: #fff;
     color: #000;
 
 }
+
+
 #menu {
-    border-top: solid 6px #f00;
-    background-color: #f00;
-    color: #fff;
-    height: 400px;
+
+    padding: 0 15px;
+    height: 100%;
 }
 
 #menu a {
-    background-color: #f00;
-    color: #fff;
-    text-decoration: none;
+
+    background-color: #206554;
+    color: #ffffff;
     display: block;
 }
 #menu a:hover {
-    background-color: #f00;
-    color: #ddd;
+    background-color: #00b085;
+    color: #fff;
     text-decoration:underline;
     display: block;
 }
 
-#content {
-    background-color: #fff;
-    border-top: solid 6px #f00;
-
+.container {
+    background-color: #DAE6DA;
 }
 
 #footer {
@@ -35,4 +37,7 @@
     text-align: center;
     background-color: #000;
     color: #fff;
+}
+body{
+
 }

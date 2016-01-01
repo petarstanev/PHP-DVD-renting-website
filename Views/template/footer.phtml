@@ -2,17 +2,25 @@
 </div>
 
 
-<div class="row" id="footer" class="col-xs-12">
-    <?php
-    if (session_status() == PHP_SESSION_NONE) {
-        session_start();
+<div>
 
-    }
-    if(isset($_SESSION['email'])) {?>
-        <p>Logged in as :  <?php echo $_SESSION["email"]?></p>
-    <?php }else {
-        echo "Not logged in.";
-    }?>
+        <div class="row col-xs-8 col-xs-offset-2">
+            <p class="text-center">
+                <?php
+                if (session_status() == PHP_SESSION_NONE) {
+                    session_start();
+
+                }
+                if(isset($_SESSION['email'])) {?>
+            <p>Logged in as : <?php echo $_SESSION["email"]?> </p>
+            <?php }else {
+                echo "Not logged in.";
+            }?>
+            <p>
+            Created by Petar Stanev. For "Server-side Programming" module in University of Salford.
+            </p>
+        </div>
+
 </div>
 </div>
 <!-- Bootstrap core JavaScript

@@ -11,7 +11,7 @@
 	<?php foreach ($result as $dvd) : ?>
 		<tr>
 			<td>
-				<img src="<?php echo $dvd['image'];?>" alt="Smiley face" height="42" width="42">
+				<img src="<?php echo $dvd['image'];?>" height="317" width="214">
 				<p>Title: <?php echo $dvd['title'];?> (<?php echo $dvd['year'];?>)</p>
 				<p>Cast: <?php echo $dvd['director'];?> </p>
 				<p>Cast: <?php echo $dvd['cast'];?> </p>
@@ -30,7 +30,7 @@
 						break;
 				}
 				?>
-				<u><a href="basket.php?id=<?php echo $dvd['id']?>">Rent</a></u>
+				<u><a class="btn btn-primary" href="basket.php?id=<?php echo $dvd['id']?>">Rent</a></u>
 			</td>
 		</tr>
 	<?php endforeach; ?>

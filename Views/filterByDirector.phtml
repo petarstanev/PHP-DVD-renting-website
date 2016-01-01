@@ -4,14 +4,14 @@
 
 <p>Director:
 <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
-	<select name="director">
+	<select name="director" class="input-sm">
 
 		<?php foreach ($allDirectors as $director) : ?>
 			<option <?php if (isset($_POST['director'])) {if ($_POST['director'] == $director["director"]) {?> selected <?php }} ?> value="<?php echo $director["director"] ?>"><?php echo $director["director"] ?></option>
 		<?php endforeach; ?>
 	</select>
 
-	<input type="submit" name="directorSelect" value="Select">
+	<input class="btn btn-primary" type="submit" name="directorSelect" value="Select">
 </form>
 </p>
 

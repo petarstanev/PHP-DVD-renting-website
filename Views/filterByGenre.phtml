@@ -4,14 +4,14 @@
 
 <p>Genre:
 <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
-	<select name="genre">
+	<select name="genre" class="input-sm">
 
 		<?php foreach ($allGenres as $genre) : ?>
 			<option <?php if (isset($_POST['genre'])) {if ($_POST['genre'] == $genre["genre"]) {?> selected <?php }} ?> value="<?php echo $genre["genre"] ?>"><?php echo $genre["genre"] ?></option>
 		<?php endforeach; ?>
 	</select>
 
-	<input type="submit" name="genreSelect" value="Select">
+	<input class="btn btn-primary" type="submit" name="genreSelect" value="Select">
 </form>
 </p>
 

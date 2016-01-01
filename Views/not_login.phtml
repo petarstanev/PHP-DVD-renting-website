@@ -8,15 +8,16 @@
 		Password: <input type="password" name="password" value="<?php if(!empty($_POST['password']) && !isset( $_POST["reset"] ))echo $_POST['password']; ?>">
 	</p>
 	<p>
-		<input class="btn-primary" type="submit" name="login" value="Login">
-		<input class="btn-danger" type="submit" name="reset" value="Reset">
+		<input class="btn btn-primary" type="submit" name="login" value="Login">
+		<input class="btn btn-danger" type="submit" name="reset" value="Reset">
 	</p>
 </form>
 
 
 
 
-<?php foreach($view->messages as $message):?>
+<?php if(isset($view->messages))
+foreach($view->messages as $message):?>
 	<div class="alert-danger"> <?php echo $message ?></div>
 <?php endforeach;
 require( 'template/footer.phtml' ) ?>

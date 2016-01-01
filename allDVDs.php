@@ -3,7 +3,7 @@
 require_once("Models/allDVDs.php");
 
 $view = new stdClass();
-$view->pageTitle = 'Login';
+$view->pageTitle = 'All DVDs';
 
 $allDVDs = new AllDVDs();
 $result = $allDVDs->getAllDVDs();

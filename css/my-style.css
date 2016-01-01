@@ -9,35 +9,32 @@ padding-bottom: 20px;
 }
 
 
-#menu {
-
-    padding: 0 15px;
-    height: 100%;
-}
-
 #menu a {
 
     background-color: #206554;
     color: #ffffff;
     display: block;
 }
+
 #menu a:hover {
     background-color: #00b085;
     color: #fff;
-    text-decoration:underline;
     display: block;
 }
 
+#main{
+    padding-bottom: 20px;
+}
+
 .container {
-    background-color: #DAE6DA;
+    background-color: #eee;
 }
 
-#footer {
-    margin_top: 20px;
-    text-align: center;
-    background-color: #000;
-    color: #fff;
-}
-body{
-
+footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    /* Set the fixed height of the footer here */
+    height: 60px;
+    background-color: #f5f5f5;
 }

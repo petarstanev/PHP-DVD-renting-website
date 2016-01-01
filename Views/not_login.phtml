@@ -1,6 +1,6 @@
 <?php require( 'template/header.phtml' );?>
 <h3><b>Login</b></h3>
-<p>If you have already Registered, <u><a href="registration.php">Register here</a></u></p>
+<p>If you have already Registered, <u><a href="registration.php">Login here</a></u></p>
 
 <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
 	<p><b>Login</b> using your <b>email address</b> and password:<br>
@@ -8,12 +8,15 @@
 		Password: <input type="password" name="password" value="<?php if(!empty($_POST['password']) && !isset( $_POST["reset"] ))echo $_POST['password']; ?>">
 	</p>
 	<p>
-		<input type="submit" name="login" value="Login">
-		<input type="submit" name="reset" value="Reset">
+		<input class="btn-primary" type="submit" name="login" value="Login">
+		<input class="btn-danger" type="submit" name="reset" value="Reset">
 	</p>
-
 </form>
 
 
 
-<?php require( 'template/footer.phtml' ) ?>
+
+<?php foreach($view->messages as $message):?>
+	<div class="alert-danger"> <?php echo $message ?></div>
+<?php endforeach;
+require( 'template/footer.phtml' ) ?>

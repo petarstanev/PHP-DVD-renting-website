@@ -19,4 +19,3 @@ if ($login->isLoggedIn()==true) {
 } else {
 	require_once("Views/not_login.phtml");
 }
-

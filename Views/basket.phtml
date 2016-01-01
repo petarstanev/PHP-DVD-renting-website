@@ -2,13 +2,10 @@
 
 <h3><b>Basket</b></h3>
 
-<h2><b>Your movies:</b> </h2>
 
-<?php
-
-
-if ( isset( $selectedMovies ) && !empty($selectedMovies)):?>
-<div class="container">
+<?php if ( isset( $selectedMovies ) && !empty($selectedMovies)):?>
+	<h4><b>Your movies:</b> </h4>
+	<div class="container">
 	<table class="table-bordered">
 		<thead>
 		<tr>
@@ -31,9 +28,12 @@ if ( isset( $selectedMovies ) && !empty($selectedMovies)):?>
 	</table>
 
 	<p><h3>Total rental cost = &pound<?php echo $totalCost ?></h3></p>
+<form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
+	<input type="submit" name="payAndLogout" value="Pay for DVD and Logout">
+</form>
 
-	<u><a href="" >Pay for DVD and Logout</a></u>
 </div>
-<?php endif ?>
-
+<?php else: ?>
+	<h4><b>Your basket is empty.</b> </h4>
+<?php endif;?>
 <?php require('template/footer.phtml') ?>

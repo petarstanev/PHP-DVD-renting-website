@@ -1,7 +1,9 @@
 <?php require( 'template/header.phtml' ) ?>
-
- You are logged in.
+<div class="alert alert-success">
+	You are logged in.
+</div>
 <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
-	<input type="submit" name="logout" value="Log out">
+	<input type="submit" class="btn-danger" name="logout" value="Log out">
 </form>
+
 <?php require( 'template/footer.phtml' ) ?>

@@ -1,4 +1,5 @@
 <?php
+require_once("Core/Model.php");
 
 /**
  * Created by PhpStorm.
@@ -6,7 +7,7 @@
  * Date: 31/12/2015
  * Time: 00:33
  */
-class DVD {
+class DVD extends Model{
 	public $id;
 	public $title;
 	public $cast;
@@ -33,14 +34,13 @@ class DVD {
 	 * @param $year
 	 */
 	public function __construct( $id ) {
-
-		$db = new PDO( 'mysql:host=localhost;dbname=dvd_project;charset=utf8', 'root', '' );
-
+		parent::__construct();
 		$id  = mysql_real_escape_string( $id );
 		$sql    = "SELECT *
                     FROM dvds
                     WHERE id = '" . $id . "';";
-		$result = $db->query( $sql );
+
+		$result = $this->db->query( $sql );
 		$result_row = $result->fetch( PDO::FETCH_ASSOC );
 
 		$this->id        = $id;
@@ -65,8 +65,4 @@ class DVD {
 		$this->renterID  = "";
 		$this->year      = $result_row['year'];
 	}
-
-
-
-
 }

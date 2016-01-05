@@ -1,11 +1,13 @@
 <?php
+require_once("Core/Model.php");
 
-class Login {
+class Login extends Model{
 	var $email = '';
 	var $password = '';
 	var $messages = array();
 
 	public function __construct() {
+		parent::__construct();
 		if (session_status() == PHP_SESSION_NONE) {
 			session_start();
 		}
@@ -29,13 +31,11 @@ class Login {
 			$this->messages[] = "Password is empty.";
 		} else {
 			try {
-				$db = new PDO( 'mysql:host=localhost;dbname=dvd_project;charset=utf8', 'root', '' );
-
 				$email  = mysql_real_escape_string( $this->email );
 				$sql    = "SELECT *
                     FROM users
                     WHERE email = '" . $email . "';";
-				$result = $db->query( $sql );
+				$result = $this->db->query( $sql );
 
 				// if this user exist
 				if ( $result->rowCount() == 1 ) {

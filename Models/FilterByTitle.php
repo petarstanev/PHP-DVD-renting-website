@@ -1,18 +1,18 @@
 <?php
+require_once("Core/Model.php");
 
-class FilterByTitle {
+class FilterByTitle extends Model{
 	var $result = '';
 	var $messages = array();
 
 	public function getAllDVDsByTitle( $title ) {
-		$db = new PDO( 'mysql:host=localhost;dbname=dvd_project;charset=utf8', 'root', '' );
 		try {
 			$sql = "	SELECT *
 					  	FROM dvds
 						WHERE title
 						LIKE '%" . $title . "%';";
 
-			$this->result = $db->query( $sql );
+			$this->result = $this->db->query( $sql );
 			if ( $this->result->rowCount() > 0 ) {
 
 				return $allDVDs = $this->result->fetchAll( PDO::FETCH_ASSOC );

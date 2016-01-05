@@ -55,7 +55,6 @@ class Basket extends Model{
 	public function getSelectedMovies(){
 
 		if(isset($_GET["id"])) {
-
 			$selectedMovieID = htmlspecialchars( $_GET["id"] );
 			if (!$this->checkIfMovieIsRented($_GET["id"])) {
 				$dvd = new DVD( $selectedMovieID );
@@ -64,7 +63,6 @@ class Basket extends Model{
 		}
 		return $_SESSION['selectedMovies'];
 	}
-
 
 
 	public function getTotalCost(){

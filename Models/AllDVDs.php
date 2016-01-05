@@ -1,20 +1,15 @@
 <?php
+require_once("Core/Model.php");
 
-class AllDVDs {
+class AllDVDs extends Model{
 	var $result = '';
-
 	var $messages = array();
 
-	public function __construct() {
-
-	}
-
 	public function getAllDVDs(){
-		$db = new PDO( 'mysql:host=localhost;dbname=dvd_project;charset=utf8', 'root', '' );
 		try {
 			$sql    = "SELECT *
                     FROM dvds;";
-			$this->result = $db->query( $sql );
+			$this->result = $this->db->query( $sql );
 
 			return $allDVDs = $this->result->fetchAll( PDO::FETCH_ASSOC );
 		} catch ( PDOException $ex ) {

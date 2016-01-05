@@ -1,41 +1,45 @@
 <?php
+require_once("Core/Model.php");
 
-class Basket {
+class Basket extends Model{
 	var $result = "";
-	//public $selectedMovies = array() ;
 	public $messages = array();
 
 	public function __construct() {
+		parent::__construct();
 		require_once('Models/DVD.php');
 		require_once('Models/Login.php');
 		if (session_status() == PHP_SESSION_NONE) {
 			session_start();
 		}
 		if ( isset( $_POST["payAndLogout"] ) ) {
-			$db = new PDO( 'mysql:host=localhost;dbname=dvd_project;charset=utf8', 'root', '' );
+			$this->payAndLogout();
+		}
+	}
 
-			$email  = mysql_real_escape_string( $_SESSION['email'] );
+	public function payAndLogout(){
+		$email  = mysql_real_escape_string( $_SESSION['email'] );
 
-			$sql    = "SELECT id
+		$sql    = "SELECT id
                     FROM users
                     WHERE email = '" . $email . "';";
-			$stmt = $db->prepare($sql);
+		$stmt = $this->db->prepare($sql);
+		$stmt->execute();
+		$row = $stmt->fetch();
 
-			$stmt->execute();
-			$row = $stmt->fetch();
+		$this->rentMovies($row["id"]);
 
+		session_destroy();
+		header('Location: '.$_SERVER['REQUEST_URI']);
+		$this->messages[] = "You have been logged out.";
+	}
 
-
-			foreach( $_SESSION['selectedMovies'] as $movie){
-				$sql    = "UPDATE dvds
-				SET renterID='" . $row["id"] . "'
+	public function rentMovies($user_id){
+		foreach( $_SESSION['selectedMovies'] as $movie){
+			$sql    = "UPDATE dvds
+				SET renterID='" . $user_id . "'
 				WHERE id='".$movie->id."';";
-				$db->query( $sql );
-			}
-
-			session_destroy();
-			header('Location: '.$_SERVER['REQUEST_URI']);
-			$this->messages[] = "You have been logged out.";
+			$this->db->query( $sql );
 		}
 	}
 

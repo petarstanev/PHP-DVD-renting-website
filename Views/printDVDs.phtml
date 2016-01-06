@@ -1,41 +1,51 @@
-<?php if ( isset( $result )):?>
-<table class="table-bordered">
-	<thead>
-	<tr>
-		<th>DVD details</th>
-		<th>Price</th>
-	</tr>
-	</thead>
-	<tbody>
+<?php if (isset($result)): ?>
+    <table class="table-bordered">
+        <thead>
+        <tr>
+            <th>DVD details</th>
+            <th>Price</th>
+        </tr>
+        </thead>
+        <tbody>
+        <?php foreach ($result as $dvd): ?>
+            <tr>
+                <td>
+                    <?php
+                    $images = explode(", ", $dvd['image']);
+                    foreach($images as $image){
+                        ?><img src="<?php echo $image;?>" height="317" width="214"><?php
+                    }?>
 
-	<?php foreach ($result as $dvd):?>
+                    <p>Title: <?php echo $dvd['title']; ?> (<?php echo $dvd['year']; ?>)</p>
 
+                    <p>Director: <?php echo $dvd['director']; ?> </p>
 
-		<tr>
-			<td>
-				<img src="<?php echo $dvd['image'];?>" height="317" width="214">
-				<p>Title: <?php echo $dvd['title'];?> (<?php echo $dvd['year'];?>)</p>
-				<p>Cast: <?php echo $dvd['director'];?> </p>
-				<p>Cast: <?php echo $dvd['cast'];?> </p>
-				<p>Genre: <?php echo $dvd['genre'];?> </p>
-				<p>Synopsis: <?php echo $dvd['synopsis'];?> </p>
-			</td>
-			<td>&pound<?php switch ($dvd['priceBand']) {
-					case "A":
-						echo "3.50";
-						break;
-					case "B":
-						echo "2.50";
-						break;
-					case "C":
-						echo "1.00";
-						break;
-				}
-				?>
-				<u><a class="btn btn-primary" href="basket.php?id=<?php echo $dvd['id']?>">Rent</a></u>
-			</td>
-		</tr>
-	<?php endforeach; ?>
-	</tbody>
-</table>
+                    <p>Cast: <?php echo $dvd['cast']; ?> </p>
+
+                    <p>Genre: <?php echo $dvd['genre']; ?> </p>
+
+                    <p>Synopsis: <?php echo $dvd['synopsis']; ?> </p>
+                </td>
+                <td>&pound<?php switch ($dvd['priceBand']) {
+                        case "A":
+                            echo "3.50";
+                            break;
+                        case "B":
+                            echo "2.50";
+                            break;
+                        case "C":
+                            echo "1.00";
+                            break;
+                    }?>
+                    <br>
+                    <?php if (is_null($dvd['renterID'])):?>
+                        <a class="btn btn-primary" href="basket.php?id=<?php echo $dvd['id'] ?>">Rent</a>
+                    <?php else: ?>
+                        <a class="btn btn-warning">Rented out</a>
+                    <?php endif; ?>
+                </td>
+            </tr>
+        <?php endforeach; ?>
+        </tbody>
+    </table>
 <?php endif; ?>

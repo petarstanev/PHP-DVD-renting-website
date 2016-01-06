@@ -1,10 +1,8 @@
 <?php
 
 /**
- * Created by PhpStorm.
- * User: Petar
- * Date: 05/01/2016
- * Time: 15:35
+ * Core class Model
+ * Used by all models as a parent class.
  */
 abstract class Model {
 	/**
@@ -13,7 +11,7 @@ abstract class Model {
 	protected $db;
 
 	/**
-	 * Create a new instance of the database connection.
+	 * Create a new instance of the database connection when we create the object.
 	 */
 	public function __construct()
 	{

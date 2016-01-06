@@ -1,35 +1,51 @@
 <?php
 require_once("Core/Model.php");
 
-class FilterByGenre extends Model{
-	var $result = '';
-	var $allGenres = array() ;
-	var $messages = array();
+/**
+ * Model FilterByGenre
+ */
+class FilterByGenre extends Model
+{
+    var $result = '';
+    var $allGenres = array();
+    var $messages = array();
 
-	public function getAllGenres(){
-		try {
-			$sql    = "SELECT DISTINCT(genre)
+    /**
+     * @return allGenres
+     * Return all unique Genres.
+     */
+    public function getAllGenres()
+    {
+        try {
+            $sql = "SELECT DISTINCT(genre)
                     FROM dvds;";
-			$this->result = $this->db->query( $sql );
+            $this->result = $this->db->query($sql);
 
-			return $allGenres = $this->result->fetchAll( PDO::FETCH_ASSOC );
-		} catch ( PDOException $ex ) {
-			$this->messages[] = "Error with the database.<br>" . $ex->getMessage();
-		}
-	}
+            return $allGenres = $this->result->fetchAll(PDO::FETCH_ASSOC);
+        } catch (PDOException $ex) {
+            $this->messages[] = "Error with the database.<br>" . $ex->getMessage();
+        }
+    }
 
-	public function getAllDVDsByGenre($genre){
-		try {
-			$sql    = "SELECT *
+    /**
+     * @param genre
+     * @return allDVDs
+     *
+     * Get all movies from a genre.
+     */
+    public function getAllDVDsByGenre($genre)
+    {
+        try {
+            $sql = "SELECT *
                     FROM dvds
-                    WHERE genre='".$genre."';";
+                    WHERE genre='" . $genre . "';";
 
-			$this->result = $this->db->query( $sql );
+            $this->result = $this->db->query($sql);
 
-			return $allDVDs = $this->result->fetchAll(PDO::FETCH_ASSOC);
-		} catch ( PDOException $ex ) {
-			$this->messages[] = "Error with the database.<br>" . $ex->getMessage();
-		}
-	}
+            return $allDVDs = $this->result->fetchAll(PDO::FETCH_ASSOC);
+        } catch (PDOException $ex) {
+            $this->messages[] = "Error with the database.<br>" . $ex->getMessage();
+        }
+    }
 
 }

@@ -17,14 +17,12 @@ class FilterByPrice extends Model
      */
     public function getAllDVDsByPrice($price)
     {
-
         try {
             $sql = "	SELECT *
 					  	FROM dvds
 						WHERE priceBand='" . $price . "';";
 
             $this->result = $this->db->query($sql);
-
             if ($this->result->rowCount() > 0) {
 
                 return $allDVDs = $this->result->fetchAll(PDO::FETCH_ASSOC);

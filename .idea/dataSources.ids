@@ -14,7 +14,7 @@
       <column name="director" sqlType="VARCHAR" precision="32" scale="0" nullable="false" jdbcType="12"/>
       <column name="genre" sqlType="VARCHAR" precision="32" scale="0" nullable="true" jdbcType="12"/>
       <column name="synopsis" sqlType="VARCHAR" precision="500" scale="0" nullable="false" jdbcType="12"/>
-      <column name="image" sqlType="VARCHAR" precision="128" scale="0" nullable="false" jdbcType="12"/>
+      <column name="image" sqlType="VARCHAR" precision="500" scale="0" nullable="false" jdbcType="12"/>
       <column name="renterID" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
       <column name="year" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
       <column name="priceBand" sqlType="CHAR" precision="1" scale="0" nullable="false" jdbcType="1"/>

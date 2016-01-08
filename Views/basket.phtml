@@ -3,7 +3,7 @@
 <h3><b>Basket</b></h3>
 
 
-<?php if ( isset( $selectedMovies ) && !empty($selectedMovies)):?>
+<?php if ( isset( $_SESSION['selectedMovies'] ) && !empty($_SESSION['selectedMovies'])):?>
 	<h4><b>Your movies:</b> </h4>
 	<table class="table-bordered">
 		<thead>
@@ -14,7 +14,7 @@
 		</thead>
 		<tbody>
 
-		<?php foreach ($selectedMovies as $dvd) : ?>
+		<?php foreach ($_SESSION['selectedMovies'] as $dvd) : $dvd=unserialize($dvd);?>
 			<tr>
 				<td>
 					<p><?php echo $dvd->title;?> </p>

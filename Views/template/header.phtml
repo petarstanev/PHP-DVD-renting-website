@@ -1,4 +1,10 @@
 <?php
+error_reporting(E_ALL | E_STRICT);
+ini_set('display_erorrs', true);
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
+//var_dump($_SESSION);
 ?>
 <!DOCTYPE html>
 <html lang="en">

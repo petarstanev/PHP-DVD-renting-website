@@ -33,7 +33,7 @@ class Registration extends Model
         } elseif (empty($_POST['password'])) {
             $this->messages[] = "Empty Password";
         } elseif (strlen($_POST['password']) < 6) {
-            $this->messages[] = "Password has a minimum length of 6 characters";
+            $this->messages[] = "Password must have a minimum length of 6 characters.";
         } elseif (strlen($_POST['email']) > 64 || strlen($_POST['email']) < 2) {
             $this->messages[] = "Email cannot be shorter than 2 or longer than 64 characters";
         } elseif (empty($_POST['address'])) {

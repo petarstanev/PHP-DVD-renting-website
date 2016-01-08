@@ -47,7 +47,9 @@ class DVD extends Model
                     WHERE id = '" . $id . "';";
 
         $result = $this->db->query($sql);
+
         $result_row = $result->fetch(PDO::FETCH_ASSOC);
+
 
         $this->id = $id;
         $this->priceBand = $result_row['priceBand'];
@@ -62,13 +64,23 @@ class DVD extends Model
                 $this->price = 1;
                 break;
         }
+
         $this->title = $result_row['title'];
         $this->cast = $result_row['cast'];
         $this->director = $result_row['director'];
         $this->genre = $result_row['genre'];
         $this->synopsis = $result_row['synopsis'];
         $this->image = $result_row['image'];
-        $this->renterID = $result_row['renterID'];
+        if(!is_null($result_row['renterID'])){
+        //$this->renterID = $result_row['renterID'];
+            $this->renterID="";
+        }else{
+            $this->renterID="";
+        }
         $this->year = $result_row['year'];
+
+        $this->db=null;
     }
+
+
 }

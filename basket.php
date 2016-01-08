@@ -18,5 +18,6 @@ if ($login->isLoggedIn() == true) {
     $view->totalCost = $totalCost;
     require_once("Views/basket.phtml");
 } else {
-    require_once("Views/not_login.phtml");
+    header("Location: login.php");//redirect to the login page
+    exit();
 }

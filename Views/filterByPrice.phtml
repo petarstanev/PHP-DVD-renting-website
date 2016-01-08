@@ -1,0 +1,23 @@
+<?php require('template/header.phtml') ?>
+
+<h2><b>Filter by price</b></h2>
+
+<form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
+    <select name="price" class="input-sm">
+        <option <?php if (isset($_POST['price']) && $_POST['price'] == 'A') { ?> selected <?php } ?> value='A'>A
+            &pound3.50
+        </option>
+        <option <?php if (isset($_POST['price']) && $_POST['price'] == 'B') { ?> selected <?php } ?> value='B'>B
+            &pound2.50
+        </option>
+        <option <?php if (isset($_POST['price']) && $_POST['price'] == 'C') { ?> selected <?php } ?> value='C'>C
+            &pound1.00
+        </option>
+    </select>
+
+    <input class="btn btn-primary" type="submit" name="priceSelect" value="Select">
+</form>
+</p>
+
+<?php require('printDVDs.phtml') ?>
+<?php require('template/footer.phtml') ?>

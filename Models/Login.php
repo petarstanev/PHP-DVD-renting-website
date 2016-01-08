@@ -38,8 +38,6 @@ class Login extends Model
         $this->email = $_POST['email'];
         $this->password = $_POST['password'];
 
-
-        // check login form contents
         if (empty($this->email)) {
             $this->messages[] = "Email is empty.";
         } elseif (empty($this->password)) {

@@ -1,4 +1,4 @@
-<?php if (isset($result)): ?>
+<?php if (isset($result) && is_array($result)): ?>
     <table class="table-bordered">
         <thead>
         <tr>
@@ -13,9 +13,9 @@
                     <?php
                     $images = explode(", ", $dvd['image']);
                     foreach($images as $image){
-                        ?><img src="<?php echo $image;?>" height="317" width="214"><?php
+                        ?><img src="<?php echo $image;?>" height="253" width="171"><?php
                     }?>
-
+                    <br>
                     <p>Title: <?php echo $dvd['title']; ?> (<?php echo $dvd['year']; ?>)</p>
 
                     <p>Director: <?php echo $dvd['director']; ?> </p>
@@ -48,4 +48,6 @@
         <?php endforeach; ?>
         </tbody>
     </table>
+<?php else: ?>
+    <div class="alert-warning"> No results found.</div>
 <?php endif; ?>

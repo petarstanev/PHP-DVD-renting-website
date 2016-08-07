@@ -8,7 +8,7 @@ $view->pageTitle = 'FilterByPrice';
 $filterByPrice = new FilterByPrice();
 
 if (isset($_POST["priceSelect"])) {
-    $result = $filterByPrice->getAllDVDsByPrice($_POST["price"]);
+    $result = $filterByPrice->getAllCDsByPrice($_POST["price"]);
     $view->result = $result;
 }
 require_once("Views/filterByPrice.phtml");

@@ -11,22 +11,22 @@ class FilterByTitle extends Model
 
     /**
      * @param $title
-     * @return allDVDs
+     * @return allCDs
      *
      * Get all movies that contain that title.
      */
-    public function getAllDVDsByTitle($title)
+    public function getAllCDsByTitle($title)
     {
         try {
             $sql = "	SELECT *
-					  	FROM dvds
+					  	FROM cds
 						WHERE title
 						LIKE '%" . $title . "%';";
 
             $this->result = $this->db->query($sql);
             if ($this->result->rowCount() > 0) {
 
-                return $allDVDs = $this->result->fetchAll(PDO::FETCH_ASSOC);
+                return $allCDs = $this->result->fetchAll(PDO::FETCH_ASSOC);
             } else {
                 return "No results found for '" . $title . "'";
             }

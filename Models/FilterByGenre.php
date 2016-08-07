@@ -18,7 +18,7 @@ class FilterByGenre extends Model
     {
         try {
             $sql = "SELECT DISTINCT(genre)
-                    FROM dvds;";
+                    FROM cds;";
             $this->result = $this->db->query($sql);
 
             return $allGenres = $this->result->fetchAll(PDO::FETCH_ASSOC);
@@ -29,20 +29,19 @@ class FilterByGenre extends Model
 
     /**
      * @param genre
-     * @return allDVDs
+     * @return allCDs
      *
-     * Get all movies from a genre.
+     * Get all cds from a genre.
      */
-    public function getAllDVDsByGenre($genre)
+    public function getAllCDsByGenre($genre)
     {
         try {
             $sql = "SELECT *
-                    FROM dvds
+                    FROM cds
                     WHERE genre='" . $genre . "';";
 
             $this->result = $this->db->query($sql);
-
-            return $allDVDs = $this->result->fetchAll(PDO::FETCH_ASSOC);
+            return $allCDs = $this->result->fetchAll(PDO::FETCH_ASSOC);
         } catch (PDOException $ex) {
             $this->messages[] = "Error with the database.<br>" . $ex->getMessage();
         }

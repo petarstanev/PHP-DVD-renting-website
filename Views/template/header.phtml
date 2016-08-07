@@ -4,7 +4,6 @@ ini_set('display_erorrs', true);
 if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
-//var_dump($_SESSION);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -43,10 +42,10 @@ if (session_status() == PHP_SESSION_NONE) {
             <ul class="nav nav-pills nav-stacked">
                 <li><a href="index.php">Home</a></li>
                 <li><a href="login.php">Login</a></li>
-                <li><a href="allDVDs.php">Show all DVDs</a></li>
+                <li><a href="allCDs.php">Show all CDs</a></li>
                 <li><a href="filterByTitle.php">Filter by Title</a></li>
                 <li><a href="filterByGenre.php">Filter by Genre</a></li>
-                <li><a href="filterByDirector.php">Filter by Director</a></li>
+                <li><a href="filterByWriter.php">Filter by Writer</a></li>
                 <li><a href="filterByPrice.php">Filter by Price</a></li>
                 <li><a href="basket.php">Basket</a></li>
             </ul>

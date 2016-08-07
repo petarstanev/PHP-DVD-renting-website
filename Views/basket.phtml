@@ -3,23 +3,23 @@
 <h3><b>Basket</b></h3>
 
 
-<?php if ( isset( $_SESSION['selectedMovies'] ) && !empty($_SESSION['selectedMovies'])):?>
-	<h4><b>Your movies:</b> </h4>
+<?php if ( isset( $_SESSION['selectedCDs'] ) && !empty($_SESSION['selectedCDs'])):?>
+	<h4><b>Your cds:</b> </h4>
 	<table class="table-bordered">
 		<thead>
 		<tr>
-			<th>DVD details</th>
+			<th>CD details</th>
 			<th>Price</th>
 		</tr>
 		</thead>
 		<tbody>
 
-		<?php foreach ($_SESSION['selectedMovies'] as $dvd) : $dvd=unserialize($dvd);?>
+		<?php foreach ($_SESSION['selectedCDs'] as $cd) : $cd=unserialize($cd);?>
 			<tr>
 				<td>
-					<p><?php echo $dvd->title;?> </p>
+					<p><?php echo $cd->title;?> </p>
 				</td>
-				<td>&pound<?php echo $dvd->price;?>
+				<td>&pound<?php echo $cd->price;?>
 				</td>
 			</tr>
 		<?php endforeach; ?>
@@ -34,7 +34,7 @@
 <?php else: ?>
 <div class="text-info alert-warning">
 	<h4><b>Your basket is empty.</b> </h4>
-	You can add DVDs from <a href="allDVDs.php">here</a>
+	You can add CDs from <a href="allCDs.php">here</a>
 </div>
     <?php endif;?>
 <?php require('template/footer.phtml') ?>

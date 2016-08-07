@@ -8,7 +8,7 @@ $view->pageTitle = 'FilterByTitle';
 $filterByTitle = new FilterByTitle();
 
 if (isset($_POST["titleSelect"])) {
-    $result = $filterByTitle->getAllDVDsByTitle($_POST["title"]);
+    $result = $filterByTitle->getAllCDsByTitle($_POST["title"]);
     $view->result = $result;
 }
 

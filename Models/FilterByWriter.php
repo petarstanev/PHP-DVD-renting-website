@@ -4,45 +4,45 @@ require_once("Core/Model.php");
 /**
  * Model FilterByDirector
  */
-class FilterByDirector extends Model
+class FilterByWriter extends Model
 {
     var $result = '';
-    var $allDirectors = array();
+    var $allWriters = array();
     var $messages = array();
 
     /**
-     * @return allDirectors
+     * @return allWritesrs
      * Return all unique directors names.
      */
-    public function getAllDirectors()
+    public function getAllWriters()
     {
         try {
-            $sql = "SELECT DISTINCT(director)
-                    FROM dvds;";
+            $sql = "SELECT DISTINCT(writer)
+                    FROM cds;";
             $this->result = $this->db->query($sql);
 
-            return $allDirectors = $this->result->fetchAll(PDO::FETCH_ASSOC);
+            return $allWriters = $this->result->fetchAll(PDO::FETCH_ASSOC);
         } catch (PDOException $ex) {
             $this->messages[] = "Error with the database.<br>" . $ex->getMessage();
         }
     }
 
     /**
-     * @param $director
-     * @return allDVDs
+     * @param $writer
+     * @return allCDs
      *
-     * Get all movies from a director.
+     * Get all movies from a writer.
      */
-    public function getAllDVDsByDirector($director)
+    public function getAllCDsByWriter($writer)
     {
         try {
             $sql = "SELECT *
-                    FROM dvds
-                    WHERE director='" . $director . "';";
+                    FROM cds
+                    WHERE writer='" . $writer . "';";
 
             $this->result = $this->db->query($sql);
 
-            return $allDVDs = $this->result->fetchAll(PDO::FETCH_ASSOC);
+            return $allCDs = $this->result->fetchAll(PDO::FETCH_ASSOC);
         } catch (PDOException $ex) {
             $this->messages[] = "Error with the database.<br>" . $ex->getMessage();
         }

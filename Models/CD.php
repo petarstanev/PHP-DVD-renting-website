@@ -4,16 +4,16 @@ require_once("Core/Model.php");
 /**
  * Model DVD
  */
-class DVD extends Model
+class CD extends Model
 {
     public $id;
     public $title;
-    public $cast;
-    public $director;
+    public $artist;
+    public $writer;
     public $genre;
     public $synopsis;
     public $image;
-    public $renterID;
+    public $clientRenting;
     public $year;
     public $priceBand;
     public $price;
@@ -24,8 +24,8 @@ class DVD extends Model
      * @param $priceBand
      * @param $id
      * @param $title
-     * @param $cast
-     * @param $director
+     * @param $artist
+     * @param $writer
      * @param $genre
      * @param $synopsis
      * @param $image
@@ -36,14 +36,14 @@ class DVD extends Model
     /**
      * @param $id
      *
-     * Create dvd object from id.
+     * Create cd object from id.
      */
     public function __construct($id)
     {
         parent::__construct();
         $id = mysql_real_escape_string($id);
         $sql = "SELECT *
-                    FROM dvds
+                    FROM cds
                     WHERE id = '" . $id . "';";
 
         $result = $this->db->query($sql);
@@ -66,16 +66,16 @@ class DVD extends Model
         }
 
         $this->title = $result_row['title'];
-        $this->cast = $result_row['cast'];
-        $this->director = $result_row['director'];
+        $this->artist = $result_row['artist'];
+        $this->writer = $result_row['writer'];
         $this->genre = $result_row['genre'];
         $this->synopsis = $result_row['synopsis'];
         $this->image = $result_row['image'];
-        if(!is_null($result_row['renterID'])){
+        if(!is_null($result_row['clientRenting'])){
         //$this->renterID = $result_row['renterID'];
-            $this->renterID="";
+            $this->clientRenting="";
         }else{
-            $this->renterID="";
+            $this->clientRenting="";
         }
         $this->year = $result_row['year'];
 

@@ -13,14 +13,14 @@
                     <?php
                     $images = explode(", ", $dvd['image']);
                     foreach($images as $image){
-                        ?><img src="<?php echo $image;?>" height="253" width="171"><?php
+                        ?><img src="<?php echo $image;?>" height="250" width="170"><?php
                     }?>
                     <br>
                     <p>Title: <?php echo $dvd['title']; ?> (<?php echo $dvd['year']; ?>)</p>
 
-                    <p>Director: <?php echo $dvd['director']; ?> </p>
+                    <p>Writer: <?php echo $dvd['writer']; ?> </p>
 
-                    <p>Cast: <?php echo $dvd['cast']; ?> </p>
+                    <p>Artist: <?php echo $dvd['artist']; ?> </p>
 
                     <p>Genre: <?php echo $dvd['genre']; ?> </p>
 
@@ -38,7 +38,8 @@
                             break;
                     }?>
                     <br>
-                    <?php if (is_null($dvd['renterID'])):?>
+
+                    <?php if (is_null($dvd['clientRenting'])):?>
                         <a class="btn btn-primary" href="basket.php?id=<?php echo $dvd['id'] ?>">Rent</a>
                     <?php else: ?>
                         <a class="btn btn-warning">Rented out</a>

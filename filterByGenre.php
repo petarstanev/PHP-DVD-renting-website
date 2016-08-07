@@ -10,7 +10,7 @@ $filterByGenre = new FilterByGenre();
 $allGenres = $filterByGenre->getAllGenres();
 $view->allGenres = $allGenres;
 if (isset($_POST["genreSelect"])) {
-    $result = $filterByGenre->getAllDVDsByGenre($_POST["genre"]);
+    $result = $filterByGenre->getAllCDsByGenre($_POST["genre"]);
     $view->result = $result;
 }
 

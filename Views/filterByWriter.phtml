@@ -1,0 +1,19 @@
+<?php require('template/header.phtml') ?>
+
+<h2><b>Filter by writer</b> </h2>
+
+<p>Director:
+<form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
+	<select name="writer" class="input-sm">
+
+		<?php foreach ($allWriters as $writer) : ?>
+			<option <?php if (isset($_POST['writer'])) {if ($_POST['writer'] == $writer["writer"]) {?> selected <?php }} ?> value="<?php echo $writer["writer"] ?>"><?php echo $writer["writer"] ?></option>
+		<?php endforeach; ?>
+	</select>
+
+	<input class="btn btn-primary" type="submit" name="directorSelect" value="Select">
+</form>
+</p>
+
+<?php require('printCDs.phtml') ?>
+<?php require('template/footer.phtml') ?>

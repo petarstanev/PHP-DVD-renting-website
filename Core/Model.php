@@ -15,6 +15,6 @@ abstract class Model {
 	 */
 	public function __construct()
 	{
-		$this->db = new PDO( 'mysql:host=localhost;dbname=cd_database;charset=utf8', 'root', '' );
+		$this->db = new PDO( 'mysql:host=localhost;dbname=dvd_project;charset=utf8', 'root', '' );
 	}
 }

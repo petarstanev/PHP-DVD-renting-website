@@ -11,21 +11,21 @@ class FilterByPrice extends Model
 
     /**
      * @param $price
-     * @return allCDs
+     * @return allDVDs
      *
      * Get all movies with that price
      */
-    public function getAllCDsByPrice($price)
+    public function getAllDVDsByPrice($price)
     {
         try {
             $sql = "	SELECT *
-					  	FROM cds
+					  	FROM dvds
 						WHERE priceBand='" . $price . "';";
 
             $this->result = $this->db->query($sql);
             if ($this->result->rowCount() > 0) {
 
-                return $allCDs = $this->result->fetchAll(PDO::FETCH_ASSOC);
+                return $allDVDs = $this->result->fetchAll(PDO::FETCH_ASSOC);
             } else {
                 return "No results found for '" . $price . "'";
             }
